@@ -43,17 +43,17 @@
         return <h2 className="form__texto">{ children }</h2>;
       }
 
-      function CampoDeDigitacao({label, id, name, tipo, value, placeholder, setValor}) {
+      function CampoDeDigitacao({label, tipo, value, placeholder, setValor}) {
         return (
           <div className="form__campo-digitacao">
-            <label for={id}>{label}</label>
+            <label for={tipo}>{label}</label>
             <input
               type={tipo}
-              name={name}
-              id={id}
+              name={tipo}
+              id={tipo}
               value={value}
               placeholder={placeholder}
-              onChange={(evento => setValor(evento.target.value))}
+              onChange={(evento) => setValor(evento.target.value)}
               required
             />
           </div>
@@ -67,11 +67,7 @@
       }
 
       function PaginaDeLogin() {
-        let email = 'ola'
-        function substituiValorDoCampo(novoValor) {
-          email = novoValor;
-          console.log(email);
-        }
+        const [email, setValor] = React.useState('');
         return (
           <div className="container-login">
             <img
@@ -82,8 +78,8 @@
               <form>
                 <Titulo>Login</Titulo>
                 <Subtitulo>Boas-vindas! Faça seu login.</Subtitulo>
-                <CampoDeDigitacao label='E-mail ou usuário' name='email' id='email' tipo='email' placeholder='email@email.com' value={email} setValor={substituiValorDoCampo}/>
-                <CampoDeDigitacao label='Senha' name='senha' id='senha' tipo='password' placeholder='******'/>
+                <CampoDeDigitacao label='E-mail ou usuário' tipo='email' placeholder='email@email.com' value={email} setValor={setValor}/>
+                <CampoDeDigitacao label='Senha' tipo='password' placeholder='******'/>
               </form>
               <Botao tipo='submit'>Login</Botao>
             </section>
