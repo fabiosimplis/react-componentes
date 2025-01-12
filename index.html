@@ -36,11 +36,32 @@
       referrerpolicy="no-referrer"
     ></script>
     <script type="text/babel">
-      function Titulo() {
-        return <h1 className="form_titulo">Login</h1>;
+      function Titulo({ children }) {
+        return <h1 className="form_titulo">{ children }</h1>;
       }
-      function Subtitulo() {
-        return <h2 className="form__texto">Boas-vindas! Faça seu login.</h2>;
+      function Subtitulo({ children }) {
+        return <h2 className="form__texto">{ children }</h2>;
+      }
+
+      function CampoDeDigitacao({label, name, tipo, placeholder}) {
+        return (
+          <div className="form__campo-digitacao">
+            <label for="email">{label}</label>
+            <input
+              type={tipo}
+              name={name}
+              id="email"
+              placeholder={placeholder}
+              required
+            />
+          </div>
+        );
+      }
+
+      function Botao({ tipo, children }) {
+        return (
+          <button type={ tipo } className='form__botao'> {children} </button>
+        )
       }
 
       function PaginaDeLogin() {
@@ -52,15 +73,12 @@
             />
             <section>
               <form>
-                <Titulo />
-                <Subtitulo />
-                <div className='form__campo-digitacao'>
-                  <label for="email">E-mail ou usuário</label>
-                  <input type="email" name="email" id="email" placeholder='email@email.com' required/>
-                  <label for="senha">Senha</label>
-                  <input type="password" name="senha" id="senha" placeholder='******' required/>
-                  </div>
+                <Titulo>Login</Titulo>
+                <Subtitulo>Boas-vindas! Faça seu login.</Subtitulo>
+                <CampoDeDigitacao label='E-mail ou usuário' name='email' tipo='email' placeholder='email@email.com'/>
+                <CampoDeDigitacao label='Senha' name='senha' tipo='password' placeholder='******'/>
               </form>
+              <Botao tipo='submit'>Login</Botao>
             </section>
           </div>
         );
