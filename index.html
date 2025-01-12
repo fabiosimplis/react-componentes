@@ -43,6 +43,35 @@
         return <h2 className="form__texto">Boas-vindas! Faça seu login.</h2>;
       }
 
+      function CampoDeDigitacao() {
+        return (
+          <div className="form__campo-digitacao">
+            <label for="email">E-mail ou usuário</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="email@email.com"
+              required
+            />
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              name="senha"
+              id="senha"
+              placeholder="******"
+              required
+            />
+          </div>
+        );
+      }
+
+      function Botao() {
+        return (
+          <button type='submit' className='form__botao'>Login</button>
+        )
+      }
+
       function PaginaDeLogin() {
         return (
           <div className="container-login">
@@ -54,13 +83,9 @@
               <form>
                 <Titulo />
                 <Subtitulo />
-                <div className='form__campo-digitacao'>
-                  <label for="email">E-mail ou usuário</label>
-                  <input type="email" name="email" id="email" placeholder='email@email.com' required/>
-                  <label for="senha">Senha</label>
-                  <input type="password" name="senha" id="senha" placeholder='******' required/>
-                  </div>
+                <CampoDeDigitacao />
               </form>
+              <Botao />
             </section>
           </div>
         );
