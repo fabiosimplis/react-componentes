@@ -68,6 +68,7 @@
 
       function PaginaDeLogin() {
         const [email, setValor] = React.useState('');
+        const [senha, setSenha] = React.useState('');
         return (
           <div className="container-login">
             <img
@@ -79,7 +80,7 @@
                 <Titulo>Login</Titulo>
                 <Subtitulo>Boas-vindas! Faça seu login.</Subtitulo>
                 <CampoDeDigitacao label='E-mail ou usuário' tipo='email' placeholder='email@email.com' value={email} setValor={setValor}/>
-                <CampoDeDigitacao label='Senha' tipo='password' placeholder='******'/>
+                <CampoDeDigitacao label='Senha' tipo='password' placeholder='******' value={senha} setValor={setSenha}/>
               </form>
               <Botao tipo='submit'>Login</Botao>
             </section>
