@@ -43,15 +43,17 @@
         return <h2 className="form__texto">{ children }</h2>;
       }
 
-      function CampoDeDigitacao({label, name, tipo, placeholder}) {
+      function CampoDeDigitacao({label, tipo, value, placeholder, setValor}) {
         return (
           <div className="form__campo-digitacao">
-            <label for="email">{label}</label>
+            <label for={tipo}>{label}</label>
             <input
               type={tipo}
-              name={name}
-              id="email"
+              name={tipo}
+              id={tipo}
+              value={value}
               placeholder={placeholder}
+              onChange={(evento) => setValor(evento.target.value)}
               required
             />
           </div>
@@ -65,20 +67,27 @@
       }
 
       function PaginaDeLogin() {
+        const [email, setValor] = React.useState('');
+        const [senha, setSenha] = React.useState('');
+        const handleSubmit = (evento) => {
+          evento.preventDefault();
+          console.log('email', email);
+          console.log('senha', senha);
+        }
         return (
           <div className="container-login">
             <img
               src="./img/imagem-login.png"
               alt="uma mulher negra de cabelos crespos usando usando óculos e usando um computador, também há o logo da codeconnect"
             />
-            <section>
+            <section onSubmit={handleSubmit}>
               <form>
                 <Titulo>Login</Titulo>
                 <Subtitulo>Boas-vindas! Faça seu login.</Subtitulo>
-                <CampoDeDigitacao label='E-mail ou usuário' name='email' tipo='email' placeholder='email@email.com'/>
-                <CampoDeDigitacao label='Senha' name='senha' tipo='password' placeholder='******'/>
+                <CampoDeDigitacao label='E-mail ou usuário' tipo='email' placeholder='email@email.com' value={email} setValor={setValor}/>
+                <CampoDeDigitacao label='Senha' tipo='password' placeholder='******' value={senha} setValor={setSenha}/>
+                <Botao tipo='submit'>Login</Botao>
               </form>
-              <Botao tipo='submit'>Login</Botao>
             </section>
           </div>
         );
