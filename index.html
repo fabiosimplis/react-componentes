@@ -37,13 +37,13 @@
     ></script>
     <script type="text/babel">
       function Titulo({ children }) {
-        return <h1 className="form_titulo">{ children }</h1>;
+        return <h1 className="form_titulo">{children}</h1>;
       }
       function Subtitulo({ children }) {
-        return <h2 className="form__texto">{ children }</h2>;
+        return <h2 className="form__texto">{children}</h2>;
       }
 
-      function CampoDeDigitacao({label, tipo, value, placeholder, setValor}) {
+      function CampoDeDigitacao({ label, tipo, value, placeholder, setValor }) {
         return (
           <div className="form__campo-digitacao">
             <label for={tipo}>{label}</label>
@@ -62,18 +62,33 @@
 
       function Botao({ tipo, children }) {
         return (
-          <button type={ tipo } className='form__botao'> {children} </button>
-        )
+          <button type={tipo} className="form__botao">
+            {" "}
+            {children}{" "}
+          </button>
+        );
+      }
+
+      function Checkbox() {
+        return (
+          <>
+            <div className="form__campo-checkbox">
+              <input type="checkbox" name="" id="lembrar" />
+              <label for="lembrar"></label>
+            </div>
+            <p className="form__opcoes">Lembrar-me</p>
+          </>
+        );
       }
 
       function PaginaDeLogin() {
-        const [email, setValor] = React.useState('');
-        const [senha, setSenha] = React.useState('');
+        const [email, setValor] = React.useState("");
+        const [senha, setSenha] = React.useState("");
         const handleSubmit = (evento) => {
           evento.preventDefault();
-          console.log('email', email);
-          console.log('senha', senha);
-        }
+          console.log("email", email);
+          console.log("senha", senha);
+        };
         return (
           <div className="container-login">
             <img
@@ -84,9 +99,24 @@
               <form>
                 <Titulo>Login</Titulo>
                 <Subtitulo>Boas-vindas! Faça seu login.</Subtitulo>
-                <CampoDeDigitacao label='E-mail ou usuário' tipo='email' placeholder='email@email.com' value={email} setValor={setValor}/>
-                <CampoDeDigitacao label='Senha' tipo='password' placeholder='******' value={senha} setValor={setSenha}/>
-                <Botao tipo='submit'>Login</Botao>
+                <CampoDeDigitacao
+                  label="E-mail ou usuário"
+                  tipo="email"
+                  placeholder="email@email.com"
+                  value={email}
+                  setValor={setValor}
+                />
+                <CampoDeDigitacao
+                  label="Senha"
+                  tipo="password"
+                  placeholder="******"
+                  value={senha}
+                  setValor={setSenha}
+                />
+
+                <Checkbox />
+
+                <Botao tipo="submit">Login</Botao>
               </form>
             </section>
           </div>
